@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Transfert d'Argent</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: auto; /* Ajout pour gérer le débordement */
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="file"],
+        select {
+            width: 100%;
+            max-width: 100%; /* Assure que le champ ne déborde pas */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Inclut la bordure et le padding dans la largeur totale */
+        }
+
+        button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .form-section {
+            border: 1px solid #4CAF50;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .form-section-title {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            margin: -20px -20px 20px -20px;
+        }
+
+        /* Styles supplémentaires pour la réactivité */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            input[type="text"],
+            input[type="number"],
+            select {
+                font-size: 14px;
+            }
+        }
+        
+        @media (min-width: 601px) and (max-width: 900px) {
+            h1 {
+                font-size: 26px;
+            }
+
+            button {
+                font-size: 15px;
+                padding: 9px;
+            }
+
+            input[type="text"],
+            input[type="number"],
+            select {
+                font-size: 15px;
+            }
+        }
+        
+        @media (min-width: 901px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            button {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            input[type="text"],
+            input[type="number"],
+            select {
+                font-size: 16px;
+            }
+        }
+    </style>
+    <script>
+        function showMessage(event) {
+            // Empêche le comportement par défaut du formulaire
+            event.preventDefault();
+
+            // Cacher le formulaire
+            document.querySelector('.container').style.display = 'none';
+
+            // Afficher le message de remerciement
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.innerHTML = `
+                <h1>Merci d'avoir choisi Patafiable !</h1>
+                <p>Nous vous remercions pour votre confiance et pour avoir choisi Pata. Nous restons à votre disposition pour vos futures transactions. 😊</p>
+            `;
+            document.body.appendChild(messageDiv);
+            messageDiv.style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Formulaire de Transfert d'Argent</h1>
+
+    <!-- Informations Expéditeur -->
+    <div class="form-section">
+        <div class="form-section-title"><strong>Informations Expéditeur</strong></div>
+        <label for="nom-expediteur">Nom de l'expéditeur</label>
+        <input type="text" id="nom-expediteur" name="nom-expediteur" required>
+
+        <label for="prenom-expediteur">Prénom de l'expéditeur</label>
+        <input type="text" id="prenom-expediteur" name="prenom-expediteur" required>
+
+        <label for="contact-expediteur">Numéro de contact</label>
+        <input type="text" id="contact-expediteur" name="contact-expediteur" required>
+
+        <label for="adresse-expediteur">Adresse</label>
+        <input type="text" id="adresse-expediteur" name="adresse-expediteur" required>
+
+        <label for="montant-envoi">Montant à envoyer</label>
+        <input type="number" id="montant-envoi" name="montant-envoi" required>
+
+        <label for="code-secret">Code secret (à communiquer au destinataire)</label>
+        <input type="text" id="code-secret" name="code-secret" required>
+
+        <label for="photo-passeport">Photo du passeport</label>
+        <input type="file" id="photo-passeport" name="photo-passeport" accept="image/*" required>
+    </div>
+
+    <!-- Informations Destinataire -->
+    <div class="form-section">
+        <div class="form-section-title"><strong>Informations Destinataire</strong></div>
+        <label for="nom-destinataire">Nom du destinataire</label>
+        <input type="text" id="nom-destinataire" name="nom-destinataire" required>
+
+        <label for="prenom-destinataire">Prénom du destinataire</label>
+        <input type="text" id="prenom-destinataire" name="prenom-destinataire" required>
+
+        <label for="pays-destination">Pays de destination</label>
+        <select id="pays-destination" name="pays-destination" required>
+            <option value="">Sélectionnez un pays</option>
+            <option value="Bangui">Bangui</option>
+            <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+        </select>
+
+        <label for="contact-destinataire">Numéro de contact</label>
+        <input type="text" id="contact-destinataire" name="contact-destinataire" required>
+    </div>
+
+    <button type="submit" onclick="showMessage(event)">Envoyer</button>
+</div>
+
+</body>
+</html>
